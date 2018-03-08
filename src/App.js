@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import LoginButton from './LoginButton';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <p className="App-intro">
           The Repository Manager that GitHub didn't provide!
         </p>
+        <LoginButton />
       </div>
     );
   }
