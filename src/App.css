@@ -31,3 +31,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.Nav-Link {
+  color: white;
+  padding: 10px 25px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+}
+
+.Nav-Link-Active {
+  /* background-color: gray; */
+  opacity: 0.2;
+}
