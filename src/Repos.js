@@ -1,5 +1,7 @@
 import React from 'react';
+import { Route, Redirect } from "react-router-dom";
 import UserManager from "./UserManager";
+import OrganizationRepos from './OrganizationRepos';
 
 class Repos extends React.Component {
     constructor(props) {
@@ -7,7 +9,8 @@ class Repos extends React.Component {
 
         this.state = {
             user: {},
-            orgs: []
+            orgs: [],
+            selectedOrg: undefined
         };
     }
 
@@ -20,7 +23,11 @@ class Repos extends React.Component {
         return (
             <React.Fragment>
                 <UserDetails user={this.state.user} />
-                <Organizations orgs={this.state.orgs} orgSelected={this.handleOrgSelected} />
+                <OrganizationPicker orgs={this.state.orgs} orgSelected={this.handleOrgSelected} />
+                <Route path={`${this.props.match.url}/:org`} component={OrganizationRepos} />
+                {this.state.selectedOrg
+                    ? <Redirect to={`${this.props.match.url}/${this.state.selectedOrg}`} />
+                    : <Redirect to={`${this.props.match.url}`} />}
             </React.Fragment>
         );
     }
@@ -34,9 +41,9 @@ class Repos extends React.Component {
     };
 
     handleOrgSelected = (e) => {
-        alert(e.target.value);
+        this.setState({ selectedOrg: e.target.value });
     };
-}
+};
 
 const UserDetails = (props) => {
     return (
@@ -47,14 +54,14 @@ const UserDetails = (props) => {
     );
 };
 
-const Organizations = (props) => {
+const OrganizationPicker = (props) => {
     return (
         <React.Fragment>
-            <h3>Organizations:</h3>
-            <select onChange={e => props.orgSelected(e)}>
-                <option>Select</option>
+            <div style={{ display: 'inline-block' }}>Organizations:</div>
+            <select style={{ display: 'inline-block', margin: '0 0 0 5px' }} onChange={e => props.orgSelected(e)}>
+                <option value=''>Select</option>
                 {props.orgs.map((org) => {
-                    return <option value={org.name}>{org.name}</option>
+                    return <option key={org.login} value={org.login}>{org.name}</option>
                 })}
             </select>
         </React.Fragment>
