@@ -10,7 +10,7 @@ import React from 'react';
 
 const LoginButton = () => (
     <button
-        onClick={() => window.location='https://github.com/login/oauth/authorize?client_id=0cfe94f780ef8adcba39&scope=user&state=foobar&allow_signup=false'}>
+        onClick={() => window.location='https://github.com/login/oauth/authorize?client_id=0cfe94f780ef8adcba39&scope=repo%20user%20admin:org&state=foobar&allow_signup=false'}>
         Log in
     </button>
 );
