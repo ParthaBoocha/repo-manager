@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
+import { Box, Text } from "gestalt";
+import "gestalt/dist/gestalt.css";
 import logo from './logo.svg';
 import './App.css';
 import './Body.css';
@@ -13,15 +15,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Repo Manager</h1>
-          <NavLink to='/repos' className='Nav-Link' activeClassName='Nav-Link-Active'>Repos</NavLink>
-          <Logout />
+        <header>
+          <Box color="darkGray" height={40} alignItems="center" direction="row" display="flex">
+            <Box paddingX={1}>
+              <img src={logo} className="App-logo" alt="logo" />
+            </Box>
+            <Box paddingX={1}>
+              <Text bold color="white">Repo Manager</Text>
+            </Box>
+            <Box paddingX={3} flex="grow">
+              <NavLink to='/repos' className='Nav-Link' activeClassName='Nav-Link-Active'>Repos</NavLink>
+              <Logout />
+            </Box>
+          </Box>
         </header>
-        <p className="App-intro">
-          The Repository Manager that GitHub didn't provide!
-        </p>
+        <Text align="center">The Repository Manager that GitHub didn't provide!</Text>
         <div className="Body">
           <AuthenticatedRoute exact path='/' component={Repos} />
           <Route exact path='/login' component={Login} />
