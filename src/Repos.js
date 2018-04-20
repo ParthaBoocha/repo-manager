@@ -2,6 +2,8 @@ import React from 'react';
 import { Route, Redirect } from "react-router-dom";
 import UserManager from "./UserManager";
 import OrganizationRepos from './OrganizationRepos';
+import OrganizationPicker from './OrganizationPicker';
+import UserProfile from './UserProfile';
 
 class Repos extends React.Component {
     constructor(props) {
@@ -22,7 +24,7 @@ class Repos extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <UserDetails user={this.state.user} />
+                <UserProfile user={this.state.user} />
                 <OrganizationPicker orgs={this.state.orgs} orgSelected={this.handleOrgSelected} />
                 <Route path={`${this.props.match.url}/:org`} component={OrganizationRepos} />
                 {this.state.selectedOrg
@@ -43,29 +45,6 @@ class Repos extends React.Component {
     handleOrgSelected = (e) => {
         this.setState({ selectedOrg: e.target.value });
     };
-};
-
-const UserDetails = (props) => {
-    return (
-        <div>
-            <div style={{ display: 'inline-block' }}>Hello</div>
-            <h4 style={{ display: 'inline-block', margin: '0 0 0 5px' }}>{props.user.name || '' }</h4>
-        </div>
-    );
-};
-
-const OrganizationPicker = (props) => {
-    return (
-        <React.Fragment>
-            <div style={{ display: 'inline-block' }}>Organizations:</div>
-            <select style={{ display: 'inline-block', margin: '0 0 0 5px' }} onChange={e => props.orgSelected(e)}>
-                <option value=''>Select</option>
-                {props.orgs.map((org) => {
-                    return <option key={org.login} value={org.login}>{org.name}</option>
-                })}
-            </select>
-        </React.Fragment>
-    );
 };
 
 export default Repos;
