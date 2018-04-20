@@ -3,7 +3,6 @@ import { Route, Redirect } from "react-router-dom";
 import UserManager from "./UserManager";
 import OrganizationRepos from './OrganizationRepos';
 import OrganizationPicker from './OrganizationPicker';
-import UserProfile from './UserProfile';
 
 class Repos extends React.Component {
     constructor(props) {
@@ -24,7 +23,6 @@ class Repos extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <UserProfile user={this.state.user} />
                 <OrganizationPicker orgs={this.state.orgs} orgSelected={this.handleOrgSelected} />
                 <Route path={`${this.props.match.url}/:org`} component={OrganizationRepos} />
                 {this.state.selectedOrg
