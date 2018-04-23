@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Text align="center">The Repository Manager that GitHub didn't provide!</Text>
+          <Text align="center">The Repository Manager that GitHub didn't provide!</Text>
         <Content />
       </div>
     );

@@ -15,7 +15,7 @@ const OrganizationPicker = (props) => {
             <SelectList
                 id="orgs"
                 name="orgs"
-                onChange={props.orgSelected}
+                onChange={e => props.orgSelected(e.value)}
                 options={options}
                 placeholder="Select Org"
                 // value={this.state.city}

@@ -40,8 +40,8 @@ class Repos extends React.Component {
         this.setState({ orgs: await UserManager.getOrganizations() });
     };
 
-    handleOrgSelected = (e) => {
-        this.setState({ selectedOrg: e.target.value });
+    handleOrgSelected = (login) => {
+        this.setState({ selectedOrg: login });
     };
 };
 
