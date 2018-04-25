@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthenticationManager from "./AuthenticationManager";
-import './Logout.css';
+import { Button, Box } from 'gestalt';
 
 class Logout extends React.Component {
     constructor() {
@@ -16,12 +16,13 @@ class Logout extends React.Component {
         }
 
         return (
-            <a className='Logout' onClick={this.logout}>Log Out</a>
+            <Box padding={2}>
+                <Button text='Log Out' onClick={this.logout} inline />
+            </Box>
         );
     }
 
-    logout = (e) => {
-        e.preventDefault();
+    logout = () => {
         this.setState({ executeLogout: true });
     };
 }

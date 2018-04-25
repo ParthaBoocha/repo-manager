@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import './Header.css'
 import logo from './logo.svg';
 import UserProfile from './UserProfile';
-import Logout from './Logout';
 
 const Header = () => {
     return (
@@ -21,7 +20,6 @@ const Header = () => {
                     <NavLink to='/repos' className='Nav-Link' activeClassName='Nav-Link-Active'>Repos</NavLink>
                 </Box>
                 <UserProfile user={{}} />
-                <Logout />
             </Box>
           </Box>
         </header>
