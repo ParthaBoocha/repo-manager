@@ -12,14 +12,16 @@ const OrganizationPicker = (props) => {
                 <Text>Organizations</Text>
             </Label>
             </Box>
-            <SelectList
-                id="orgs"
-                name="orgs"
-                onChange={e => props.orgSelected(e.value)}
-                options={options}
-                placeholder="Select Org"
-                // value={this.state.city}
-            />
+            <Box column={2}>
+                <SelectList
+                    id="orgs"
+                    name="orgs"
+                    onChange={e => props.orgSelected(e.value)}
+                    options={options}
+                    placeholder="Select Org"
+                    // value={this.state.city}
+                />
+            </Box>
       </Box>
     );
 };
