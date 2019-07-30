@@ -25,6 +25,8 @@ class Callback extends React.Component {
                 <p />
                 State: {this.state.state}
                 <p />
+                Curl: curl -d "client_id=&client_secret=&code={this.state.code}&state={this.state.state}" -X POST https://github.com/login/oauth/access_token
+                <p />
                 <div>
                     Set Access Token:
                     <input type='text' onChange={this.updateAccessToken} />
