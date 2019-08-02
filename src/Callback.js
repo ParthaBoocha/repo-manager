@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import * as qs from "query-string";
+import axios from "axios";
 import AuthenticationManager from './AuthenticationManager';
 
 class Callback extends React.Component {
@@ -13,6 +14,17 @@ class Callback extends React.Component {
             redirectTo: ''
         };
     }
+
+    // componentDidMount() {
+    //     try {
+    //         axios.post('http://localhost:7071/api/Token',
+    //             {code: this.state.code, state: this.state.state})
+    //         .then(token => this.resumeNavigation(token.data.split('&')[0].split('=')[2]))
+    //         .catch(error => console.log(error));
+    //     } catch (error) {
+    //         console.log(error);
+    //     }   
+    // }
 
     render() {
         if(this.state.redirectTo !== '') {
@@ -36,7 +48,7 @@ class Callback extends React.Component {
         );
     }
 
-    resumeNavigation = () => {
+    resumeNavigation = (token) => {
         AuthenticationManager.setAccessToken(this.state.AccessToken);
         this.setState({ redirectTo: '/repos' });
     }
